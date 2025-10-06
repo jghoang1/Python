@@ -19,14 +19,6 @@ class RobloxSimpleAuto(AutoClicker):
         super().__init__()
         self.root.title("Julius's Roblox Adopt Me Box Clicker")
         self.box_timer = self.add_timer(60 * 10.2, self.open_box, "Open Box", initial_time=5)
-        # self.shimmy_left = True
-
-    # def shimmy(self):
-    #     dir = "a" if self.shimmy_left else "d"
-    #     pydirectinput.keyDown(dir)
-    #     time.sleep(0.3)
-    #     pydirectinput.keyUp(dir)
-    #     self.shimmy_left = not self.shimmy_left
 
     def open_box(self):
         pydirectinput.press("e")

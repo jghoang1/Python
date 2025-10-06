@@ -55,7 +55,7 @@ class Timer():
         
             if self.remaining_time <= 0:
                 # hit end of timer
-                self.logger.info(f"Hit callback in {self}. Calling {self.callback}")
+                self.logger.info(f"Hit callback in {self}. Calling {self.callback.__name__}")
                 self.callback()
                 # reset timer
                 self.remaining_time = self.duration
