@@ -74,7 +74,7 @@ class GTAAuto(AutoClicker):
     def on_play(self):
         if self.fly_plane_timer.is_active:
             pydirectinput.keyDown("w")
-    
+
     def fly_plane(self):
         pydirectinput.keyDown("w")
 
@@ -115,7 +115,7 @@ class GTAAuto(AutoClicker):
         pydirectinput.keyDown("shift")
 
 if __name__ == "__main__":
-    my_autoclicker = GTAAuto()   
+    my_autoclicker = GTAAuto()
     my_autoclicker.root.geometry("500x200+2700+-300") 
     my_autoclicker.mainloop()
  

@@ -36,5 +36,5 @@ class RobloxAdoptMeAuto(AutoClicker):
 
 if __name__ == "__main__":
     my_autoclicker = RobloxAdoptMeAuto()
-    my_autoclicker.root.geometry("500x200+2700+-300") 
+    my_autoclicker.root.geometry("500x200+2700+-300")
     my_autoclicker.mainloop()

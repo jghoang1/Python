@@ -284,7 +284,7 @@ class SequenceRow(AutoclickerRow):
             pydirectinput.keyUp(prev_key)
         for key in keys:
             pydirectinput.keyDown(key)
-        
+
         self.timer.set_duration(duration)
 
         self.seq_idx = (self.seq_idx + 1) % len(self.sequence)
