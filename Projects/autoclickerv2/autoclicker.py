@@ -3,15 +3,33 @@ import tkinter.ttk as ttk
 from pynput.keyboard import Key, Listener
 import time
 import pyautogui
-import pydirectinput
 import logging
 from timer_tools import Timer
 from common import *
 from audio_trigger import AudioTrigger, DEFAULT_AUDIO_RMSE_THRESHOLD
 import re
+import sys
+
+os_platform = sys.platform
+print(f"OS Platform (sys.platform): {os_platform}")
+
+if os_platform == "win32":
+    print("Running on Windows.")
+    import pydirectinput
+    input_shim = pydirectinput
+elif os_platform == "linux":
+    print("Running on Linux.")
+elif os_platform == "darwin":  # macOS
+    print("Running on macOS.")
+    input_shim = pyautogui
+else:
+    print(f"Running on an unknown platform: {os_platform}")
 
 
-pydirectinput.PAUSE = 0.005
+
+
+
+input_shim.PAUSE = 0.005
 
 class AutoClicker():
 
@@ -35,15 +53,20 @@ class AutoClicker():
     def __init__(self):
         self.logger = logging.getLogger(f"{self.__module__}.{self.__class__.__name__}")
 
+        print("test1")
         # Main frame structure
         self.root = tk.Tk()
+        print("test2")
+        
         self.root.title("Julius's Autoclicker")
         s = ttk.Style()
         s.configure('.', font=('Helvetica', 12))
         self.root.minsize(MINWIDTH, MINHEIGHT)
         self.frm = ttk.Frame(self.root)
         self.frm.grid()
+
         
+
         # Key press listener 
         self.listener = Listener(on_press=self._key_press)
         self.listener.start()
@@ -62,6 +85,7 @@ class AutoClicker():
         # Row 2 Mouse Position Detail
         self.label_mouse_pos = ttk.Label(self.frm, text="Mouse Position: ")
         self.label_mouse_pos.grid(column=0, row=2, sticky="w", columnspan=COLUMNS)
+
 
         # Row 3 Play Pause Button
         self.play_button = ttk.Button(self.frm, text="Play", command=self.play_pause)
@@ -87,13 +111,15 @@ class AutoClicker():
 
         self.update()
 
+        
+
     def __del__(self):
         for key in self.keys_to_release:
             self.logger.info(f"Releasing {key}")
-            pydirectinput.keyUp(key)
+            input_shim.keyUp(key)
         for click in self.clicks_to_release:
             self.logger.info(f"Releasing {click} mouse button")
-            pydirectinput.mouseUp(button=click)
+            input_shim.mouseUp(button=click)
 
 
     def _key_press(self, key):
@@ -281,9 +307,9 @@ class SequenceRow(AutoclickerRow):
         self.logger.info(f"Sequence callback. keyDown: {keys}")
 
         for prev_key in prev_keys:
-            pydirectinput.keyUp(prev_key)
+            input_shim.keyUp(prev_key)
         for key in keys:
-            pydirectinput.keyDown(key)
+            input_shim.keyDown(key)
         
         self.timer.set_duration(duration)
 
@@ -426,7 +452,7 @@ class AudioTriggerRow(AutoclickerRow):
         self.logger.info(f"New input value: {self.input_var.get()}")
 
         for idx, device in self.input_devices.items():
-            self.logger.info(f"name: {device.get("name")} api: {device.get("hostApi")}")
+            self.logger.info(f"name: {device.get('name')} api: {device.get('hostApi')}")
             if device.get("name") == self.input_var.get() and device.get("hostApi") == self.host_api_idx:
                 self.audio_trigger.set_input_index(idx)
                 break
@@ -438,7 +464,7 @@ class AudioTriggerRow(AutoclickerRow):
         self.logger.info(f"New output value: {self.output_var.get()}")
 
         for idx, device in self.output_devices.items():
-            self.logger.info(f"name: {device.get("name")} api: {device.get("hostApi")}")
+            self.logger.info(f"name: {device.get('name')} api: {device.get('hostApi')}")
             if device.get("name") == self.output_var.get() and device.get("hostApi") == self.host_api_idx:
                 self.audio_trigger.set_output_index(idx)
                 break
@@ -475,5 +501,5 @@ class AudioTriggerRow(AutoclickerRow):
 
 if __name__ == "__main__":
     my_autoclicker = AutoClicker()
-    my_autoclicker.add_timer(15, pydirectinput.rightClick, "Right Click")
+    my_autoclicker.add_timer(15, input_shim.rightClick, "Right Click")
     my_autoclicker.mainloop()
