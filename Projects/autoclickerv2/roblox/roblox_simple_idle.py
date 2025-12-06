@@ -35,11 +35,7 @@ class RobloxSimpleAuto(AutoClicker):
         pydirectinput.keyUp("s")
         pydirectinput.keyUp("d")
 
-
-
-
-
-
 if __name__ == "__main__":
     my_autoclicker = RobloxSimpleAuto()
+    my_autoclicker.root.geometry("500x200+2700+-300")
     my_autoclicker.mainloop()

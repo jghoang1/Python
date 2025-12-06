@@ -41,7 +41,7 @@ class RobloxDigToHellAuto(AutoClicker):
                                pyautogui.easeOutQuad,
                                pyautogui.easeInOutQuad,
                                pyautogui.easeInElastic))
-        pyautogui.moveTo(x + dx, y + dy, duration=duration, tween = pyautogui.easeOutQuad)
+        pyautogui.moveTo(x + dx, y + dy, duration=duration, tween = tween)
         pydirectinput.click(x + dx, y + dy, clicks = 1)
         time.sleep(pause_after)
 

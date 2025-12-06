@@ -43,13 +43,13 @@ class MinecraftJavaAutoFisher(AutoClicker):
 
     def on_pause(self):
         pass
-    
+
 
 if __name__ == "__main__":
     if getattr(sys, 'frozen', False):
         filename = os.path.join(sys._MEIPASS, "audio_files\\minecraft_fishing_catch_sound_short.wav")
     else:
         filename = "C:\\Users\\Julius\\Repos\\Python\\Projects\\autoclickerv2\\minecraft_java_audio_fisher\\audio_files\\minecraft_fishing_catch_sound_short.wav"
-        
+
     my_autoclicker = MinecraftJavaAutoFisher(filename)
     my_autoclicker.mainloop()

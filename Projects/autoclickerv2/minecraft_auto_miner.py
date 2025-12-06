@@ -28,7 +28,7 @@ class MinecraftAutoMiner(AutoClicker):
     def reset_sneak(self):
         pydirectinput.keyUp("shift")
         pydirectinput.keyDown("shift")
-    
+
     def stagger_walk(self):
         pydirectinput.keyUp("w")
         time.sleep(0.5)

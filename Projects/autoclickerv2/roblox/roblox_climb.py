@@ -12,12 +12,10 @@ class RobloxUp(AutoClicker):
         super().__init__()
         self.root.title("Julius's Roblox")
 
-
     def on_pause(self):
         pydirectinput.keyUp("w")
         pydirectinput.keyDown("w")
 
-        
     def on_play(self):
         pydirectinput.keyUp("w")
 
