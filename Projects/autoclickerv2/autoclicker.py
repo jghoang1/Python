@@ -5,7 +5,6 @@ import tkinter as tk
 import tkinter.ttk as ttk
 
 import pyautogui
-import pydirectinput
 from audio_trigger import DEFAULT_AUDIO_RMSE_THRESHOLD, AudioTrigger
 from common import *
 from pynput.keyboard import Key, Listener
@@ -30,9 +29,6 @@ elif os_platform == "darwin":  # macOS
     input_shim = pyautogui
 else:
     print(f"Running on an unknown platform: {os_platform}")
-
-
-
 
 
 input_shim.PAUSE = 0.005
