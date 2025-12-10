@@ -25,7 +25,7 @@ class RobloxTankGameAuto(AutoClicker):
     def claim_gifts(self):
         if platform.system() == "Windows":
             # gifts
-            move_and_click(self, 2350, 630, max_dx=10, max_dy=10)
+            move_and_click(self, 2350, 580, max_dx=10, max_dy=10)
             move_and_click(self, 1124, 508, max_dx=1, max_dy=1)
 
             move_and_click(self, 925, 545, max_dx=50, max_dy=10)
@@ -44,7 +44,7 @@ class RobloxTankGameAuto(AutoClicker):
             move_and_click(self, 1610, 925, max_dx=50, max_dy=10)
 
             # rank
-            move_and_click(self, 2410, 735, max_dx=100, max_dy=10)
+            move_and_click(self, 2410, 690, max_dx=100, max_dy=10)
             move_and_click(self, 930, 930, max_dx=50, max_dy=50)
             move_and_click(self, 930, 930, max_dx=50, max_dy=50)
         elif platform.system() == "Darwin":
