@@ -49,28 +49,28 @@ class RobloxTankGameAuto(AutoClicker):
             move_and_click(self, 930, 930, max_dx=50, max_dy=50)
         elif platform.system() == "Darwin":
             # gifts
-            move_and_click(self, 1030, 310, max_dx=10, max_dy=10)
+            move_and_click(self, 1030, 310, max_dx=5, max_dy=5)
             # move_and_click(self, 1124, 508, max_dx=1, max_dy=1)
 
-            move_and_click(self, 410, 280, max_dx=10, max_dy=10)
-            move_and_click(self, 510, 280, max_dx=10, max_dy=10)
-            move_and_click(self, 610, 280, max_dx=10, max_dy=10)
-            move_and_click(self, 710, 280, max_dx=10, max_dy=10)
+            move_and_click(self, 400, 300, max_dx=5, max_dy=5)
+            move_and_click(self, 510, 300, max_dx=5, max_dy=5)
+            move_and_click(self, 610, 300, max_dx=5, max_dy=5)
+            move_and_click(self, 720, 300, max_dx=5, max_dy=5)
 
-            move_and_click(self, 410, 360, max_dx=10, max_dy=10)
-            move_and_click(self, 510, 360, max_dx=10, max_dy=10)
-            move_and_click(self, 610, 360, max_dx=10, max_dy=10)
-            move_and_click(self, 710, 360, max_dx=10, max_dy=10)
+            move_and_click(self, 400, 400, max_dx=5, max_dy=5)
+            move_and_click(self, 510, 400, max_dx=5, max_dy=5)
+            move_and_click(self, 610, 400, max_dx=5, max_dy=5)
+            move_and_click(self, 720, 400, max_dx=5, max_dy=5)
 
-            move_and_click(self, 410, 450, max_dx=10, max_dy=10)
-            move_and_click(self, 510, 450, max_dx=10, max_dy=10)
-            move_and_click(self, 610, 450, max_dx=10, max_dy=10)
-            move_and_click(self, 710, 450, max_dx=10, max_dy=10)
+            move_and_click(self, 400, 500, max_dx=5, max_dy=5)
+            move_and_click(self, 510, 500, max_dx=5, max_dy=5)
+            move_and_click(self, 610, 500, max_dx=5, max_dy=5)
+            move_and_click(self, 720, 500, max_dx=5, max_dy=5)
 
             # rank
-            move_and_click(self, 1050, 365, max_dx=20, max_dy=5)
-            move_and_click(self, 410, 450, max_dx=10, max_dy=10)
-            move_and_click(self, 410, 450, max_dx=10, max_dy=10)
+            move_and_click(self, 1060, 375, max_dx=1, max_dy=1)
+            move_and_click(self, 400, 470, max_dx=1, max_dy=1)
+            move_and_click(self, 400, 470, max_dx=1, max_dy=1)
 
 
 if __name__ == "__main__":
