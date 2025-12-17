@@ -38,7 +38,7 @@ def get_input_shim():
 
 INPUT_SHIM = get_input_shim()
 
-def move_and_click(self, x, y, max_dx = 10, max_dy = 10, pause_after = 0.5, duration_min=0.3, duration_max=1.5):
+def move_and_click(x, y, max_dx = 10, max_dy = 10, pause_after = 0.5, duration_min=0.3, duration_max=1.5):
     duration = random.uniform(duration_min, duration_max)
     dx = random.randrange(-max_dx, max_dx)
     dy = random.randrange(-max_dy, max_dy)

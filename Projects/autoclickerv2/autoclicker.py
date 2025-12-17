@@ -196,11 +196,9 @@ class AutoClicker:
             f"{self.__module__}.{self.__class__.__name__}"
         )
 
-        print("test1")
         # Main frame structure
         self.root = tk.Tk()
-        print("test2")
-        
+
         self.root.title("Julius's Autoclicker")
         s = ttk.Style()
         s.configure(".", font=("Helvetica", 12))
@@ -258,8 +256,6 @@ class AutoClicker:
         self.clicks_to_release = ["left", "right"]
 
         self.update()
-
-        
 
     def __del__(self):
         for key in self.keys_to_release:
