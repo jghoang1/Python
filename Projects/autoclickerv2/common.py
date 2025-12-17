@@ -1,7 +1,8 @@
 import random
-import pyautogui
-import time
 import sys
+import time
+
+import pyautogui
 
 COLUMNS = 8
 MINHEIGHT = 150
@@ -15,7 +16,7 @@ COLOR_DEBOUNCE = "#e7eb7f"
 
 FRAMERATE = 50
 FRAMELENGTH = 1000 // 50
-DEFAULT_DELAY = 0.10 # seconds
+DEFAULT_DELAY = 0.10  # seconds
 
 
 def get_input_shim():
@@ -26,6 +27,7 @@ def get_input_shim():
     if os_platform == "win32":
         print("Running on Windows.")
         import pydirectinput
+
         input_shim = pydirectinput
     elif os_platform == "linux":
         print("Running on Linux.")
@@ -36,16 +38,24 @@ def get_input_shim():
         print(f"Running on an unknown platform: {os_platform}")
     return input_shim
 
+
 INPUT_SHIM = get_input_shim()
 
-def move_and_click(x, y, max_dx = 10, max_dy = 10, pause_after = 0.5, duration_min=0.3, duration_max=1.5):
+
+def move_and_click(
+    x: int,
+    y: int,
+    max_dx: int = 10,
+    max_dy: int = 10,
+    pause_after: float = 0.5,
+    duration_min: float = 0.3,
+    duration_max: float = 1.5,
+) -> None:
     duration = random.uniform(duration_min, duration_max)
     dx = random.randrange(-max_dx, max_dx)
     dy = random.randrange(-max_dy, max_dy)
-    # tween = random.choice((pyautogui.easeInQuad,
-    #                         pyautogui.easeOutQuad,
-    #                         pyautogui.easeInOutQuad,
-    #                         pyautogui.easeInElastic))
-    pyautogui.moveTo(x + dx, y + dy, duration=duration, tween = pyautogui.easeInOutQuad)
-    INPUT_SHIM.click(x + dx, y + dy, clicks = 1)
+    pyautogui.moveTo(
+        x + dx, y + dy, duration=duration, tween=pyautogui.easeInOutQuad
+    )
+    INPUT_SHIM.click(x + dx, y + dy, clicks=1)
     time.sleep(pause_after)
