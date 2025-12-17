@@ -4,11 +4,11 @@ os.environ["DISPLAY"] = ":0"
 
 import logging
 import platform
+import time
 
 import pyautogui
 from autoclicker import AutoClicker
-from common import move_and_click, get_input_shim
-import time
+from common import get_input_shim, move_and_click
 
 logging.basicConfig(level=logging.DEBUG)
 
