@@ -45,17 +45,36 @@ INPUT_SHIM = get_input_shim()
 def move_and_click(
     x: int,
     y: int,
-    max_dx: int = 10,
-    max_dy: int = 10,
-    pause_after: float = 0.5,
-    duration_min: float = 0.3,
-    duration_max: float = 1.5,
+    clicks: int = 1,
+    interval: float = 0.5,
+    max_dx: int = 0,
+    max_dy: int = 0,
+    pause_after: float = 0.1,
+    duration_min: float = 0.0,
+    duration_max: float = 1.0,
 ) -> None:
     duration = random.uniform(duration_min, duration_max)
-    dx = random.randrange(-max_dx, max_dx)
-    dy = random.randrange(-max_dy, max_dy)
+    dx = random.randrange(-max_dx, max_dx) if max_dx else 0
+    dy = random.randrange(-max_dy, max_dy) if max_dy else 0
     pyautogui.moveTo(
         x + dx, y + dy, duration=duration, tween=pyautogui.easeInOutQuad
     )
-    INPUT_SHIM.click(x + dx, y + dy, clicks=1)
+    INPUT_SHIM.click(x + dx, y + dy, clicks=clicks, interval=interval)
+    time.sleep(pause_after)
+
+def move_to(
+    x: int,
+    y: int,
+    max_dx: int = 0,
+    max_dy: int = 0,
+    pause_after: float = 0.1,
+    duration_min: float = 0.0,
+    duration_max: float = 1.0,
+) -> None:
+    duration = random.uniform(duration_min, duration_max)
+    dx = random.randrange(-max_dx, max_dx) if max_dx else 0
+    dy = random.randrange(-max_dy, max_dy) if max_dy else 0
+    pyautogui.moveTo(
+        x + dx, y + dy, duration=duration, tween=pyautogui.easeInOutQuad
+    )
     time.sleep(pause_after)
