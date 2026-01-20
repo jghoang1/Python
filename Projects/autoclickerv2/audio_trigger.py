@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import pyaudio
 import logging
 from common import *
-import time 
+import time
 
 STFT_WIN_N = 1000
 STFT_HOP = 500

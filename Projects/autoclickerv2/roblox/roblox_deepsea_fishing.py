@@ -30,11 +30,15 @@ class RobloxDeepSeaAuto(AutoClicker):
             100 * 60, self.reset_gifts, "Reset Gifts", initial_time=45
         )
 
-        self.GIFT_X_COORDS = (810, 1130, 1450)
-        self.GIFT_Y_COORDS = (530, 790, 1050)
+        # self.GIFT_X_COORDS = (810, 1130, 1450)
+        # self.GIFT_Y_COORDS = (530, 790, 1050)
+
+        self.GIFT_X_COORDS = (600, 850, 1100)
+        self.GIFT_Y_COORDS = (380, 580, 780)
 
     def reset_gifts(self):
-        move_and_click(1960, 1240, max_dx=50, max_dy=20)
+        # move_and_click(1960, 1240, max_dx=10, max_dy=5)
+        move_and_click(1450, 920, max_dx=10, max_dy=5)
 
     def collect_money(self):
         self.input_shim.keyDown("s")
@@ -49,15 +53,15 @@ class RobloxDeepSeaAuto(AutoClicker):
             # gifts
             for y in self.GIFT_Y_COORDS:
                 for x in self.GIFT_X_COORDS:
-                    move_and_click(x, y, max_dx=100, max_dy=100)
+                    move_and_click(x, y, max_dx=10, max_dy=10)
         elif platform.system() == "Darwin":
             pass
 
 
 if __name__ == "__main__":
     my_autoclicker = RobloxDeepSeaAuto()
-    if platform.system() == "Windows":
-        my_autoclicker.root.geometry("500x200+2700+-300")
-    elif platform.system() == "Darwin":
-        my_autoclicker.root.geometry("300x150+800+100")
+    # if platform.system() == "Windows":
+    #     my_autoclicker.root.geometry("500x200+2700+-300")
+    # elif platform.system() == "Darwin":
+    #     my_autoclicker.root.geometry("300x150+800+100")
     my_autoclicker.mainloop()
