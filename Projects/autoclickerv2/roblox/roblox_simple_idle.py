@@ -1,20 +1,16 @@
-import os
-
-os.environ['DISPLAY'] = ':0'
-
 import logging
-import pyautogui
+from common import get_input_shim
 from autoclicker import AutoClicker
 import time
-from common import get_input_shim
 
 logging.basicConfig(level=logging.DEBUG)
 
-pyautogui.PAUSE = 0.005
 
 class RobloxSimpleAuto(AutoClicker):
     def __init__(self):
         super().__init__()
+        self.input_shim = get_input_shim()
+        self.input_shim.PAUSE = 0.005
         self.root.title("Julius's Roblox Simple Idle")
         self.input_shim = get_input_shim()
 
@@ -25,7 +21,8 @@ class RobloxSimpleAuto(AutoClicker):
 
         self.rapid_click_timer = self.add_timer(0, self.click, "Rapid Click", initial_playstate=False)
 
-        # self.mouse_hold_toggle = self.add_toggle("Mouse hold", self.input_shim.mouseDown(), self.input_shim.mouseUp(), initial_playstate=False)
+    def click(self):
+        self.input_shim.click()
 
     def shimmy(self):
         dir = "a" if self.shimmy_left else "d"
@@ -51,5 +48,8 @@ class RobloxSimpleAuto(AutoClicker):
 
 if __name__ == "__main__":
     my_autoclicker = RobloxSimpleAuto()
+<<<<<<< HEAD
     my_autoclicker.root.geometry("500x300+2700+-300")
+=======
+>>>>>>> 10f27ee9c01c5dbdaa88a956f37c4ab0ed55a4ed
     my_autoclicker.mainloop()

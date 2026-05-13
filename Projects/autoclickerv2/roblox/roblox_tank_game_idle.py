@@ -50,7 +50,7 @@ class RobloxTankGameAuto(AutoClicker):
         elif platform.system() == "Darwin":
             # gifts
             move_and_click(self, 1030, 310, max_dx=5, max_dy=5)
-            # move_and_click(self, 1124, 508, max_dx=1, max_dy=1)
+            move_and_click(self, 410, 190, max_dx=1, max_dy=1)
 
             move_and_click(self, 400, 300, max_dx=5, max_dy=5)
             move_and_click(self, 510, 300, max_dx=5, max_dy=5)
