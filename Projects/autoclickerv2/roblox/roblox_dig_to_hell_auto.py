@@ -18,13 +18,13 @@ class RobloxDigToHellAuto(AutoClicker):
         self.inventory_switch_timer = self.add_timer(5, self.switch_inventory, "Switch Inventory")
         self.rebirth_timer = self.add_timer(3 * 60, self.rebirth, "Rebirth")
 
-        self.walk_seq = self.add_sequence([("w", 10), 
+        self.walk_seq = self.add_sequence([("w", 10),
                                            ("a", 10),
                                            ("w", 10),
                                            ("d", 10),
                                            ("w", 10),
                                            ("a", 10),
-                                           ("s", 10), 
+                                           ("s", 10),
                                            ("d", 10),], "Walk")
         self.inventory_index = 0
         self.inventory_loop = ["1", "2"]

@@ -43,9 +43,9 @@ class RobloxDiceAuto(AutoClicker):
                 ) # basic
 
             pyautogui.scroll(-5300)
-            # move_and_click(self.X, 600) # omni
+            move_and_click(self.X, 600) # omni
             pyautogui.scroll(-430)
-            # move_and_click(self.X, 600) # wormhole
+            move_and_click(self.X, 600) # wormhole
             pyautogui.scroll(-430)
             move_and_click(self.X, 600) # toxic
             pyautogui.scroll(-430)

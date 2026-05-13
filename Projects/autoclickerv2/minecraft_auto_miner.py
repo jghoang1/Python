@@ -42,7 +42,7 @@ class MinecraftAutoMiner(AutoClicker):
         pydirectinput.keyUp("s")
         pydirectinput.keyUp("shift")
 
-        
+
     def on_play(self):
         pydirectinput.keyDown("shift")
         pydirectinput.keyDown("w")

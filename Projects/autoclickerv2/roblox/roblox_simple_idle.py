@@ -17,11 +17,15 @@ class RobloxSimpleAuto(AutoClicker):
         super().__init__()
         self.root.title("Julius's Roblox Simple Idle")
         self.input_shim = get_input_shim()
+
         self.shimmy_timer = self.add_timer(5, self.shimmy, "Shimmy", initial_playstate=False)
         self.shimmy_left = True
+
         self.click_timer = self.add_timer(1.0, self.click, "Click", initial_playstate=False)
+
         self.rapid_click_timer = self.add_timer(0, self.click, "Rapid Click", initial_playstate=False)
 
+        # self.mouse_hold_toggle = self.add_toggle("Mouse hold", self.input_shim.mouseDown(), self.input_shim.mouseUp(), initial_playstate=False)
 
     def shimmy(self):
         dir = "a" if self.shimmy_left else "d"
@@ -39,10 +43,13 @@ class RobloxSimpleAuto(AutoClicker):
     def click(self):
         self.input_shim.click()
 
+    def mouse_down_cb(self):
+        self.input_shim.mouseDown()
+
 
 
 
 if __name__ == "__main__":
     my_autoclicker = RobloxSimpleAuto()
-    my_autoclicker.root.geometry("500x200+2700+-300")
+    my_autoclicker.root.geometry("500x300+2700+-300")
     my_autoclicker.mainloop()

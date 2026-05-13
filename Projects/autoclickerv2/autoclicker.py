@@ -21,6 +21,7 @@ print(f"OS Platform (sys.platform): {os_platform}")
 if os_platform == "win32":
     print("Running on Windows.")
     import pydirectinput
+
     input_shim = pydirectinput
 elif os_platform == "linux":
     print("Running on Linux.")
@@ -265,7 +266,6 @@ class AutoClicker:
             self.logger.info(f"Releasing {click} mouse button")
             pydirectinput.mouseUp(button=click)
 
-
     def _key_press(self, key):
         self.logger.debug(f"{key} was pressed")
 
@@ -361,6 +361,7 @@ class AutoClicker:
 
 class AutoclickerRow:
     def __init__(self, parent, label, initial_playstate=True) -> None:
+        self.timer = None
         self.parent = parent
         self.original_label = label
         self.label = label
@@ -389,10 +390,11 @@ class AutoclickerRow:
         self.logger.info(f"New playstate: {self.is_playing}")
         self.play_button.config(text="Pause" if self.is_playing else "Play")
         self.set_play_label_color()
-        if self.parent.is_playing and self.is_playing:
-            self.timer.start()
-        else:
-            self.timer.pause()
+        if self.timer:
+            if self.parent.is_playing and self.is_playing:
+                self.timer.start()
+            else:
+                self.timer.pause()
 
     def play_pause_upstream(self):
         self.logger.info(
@@ -479,7 +481,7 @@ class SequenceRow(AutoclickerRow):
             input_shim.keyUp(prev_key)
         for key in keys:
             input_shim.keyDown(key)
-        
+
         self.timer.set_duration(duration)
 
         self.seq_idx = (self.seq_idx + 1) % len(self.sequence)
@@ -522,6 +524,7 @@ class TimerRow(AutoclickerRow):
         self.reset_button.grid(column=3, row=self.parent.current_row)
 
         self.parent.current_row += 1
+
         if self.timer.duration < 1:
             self.update = self._update_no_label
         else:
